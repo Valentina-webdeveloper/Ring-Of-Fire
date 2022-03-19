@@ -3,4 +3,31 @@
     height: 100vh;
     max-width: 100%;
     background-color: #404040;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        height: 100vh;
+    }
+}
+
+.start-label-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 150px;
+    display: flex;
+    justify-content: center;
+
+    img {
+        width: 30vw;
+        height: auto;
+
+        &:hover {
+            filter: brightness(1.2);
+            cursor: pointer;
+        }
+    }
+
 }

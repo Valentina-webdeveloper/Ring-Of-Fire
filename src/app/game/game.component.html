@@ -1,0 +1,8 @@
+<div class="game-field">
+
+    <div class="card-stack">
+        <img *ngFor="let card of [0,1,2,3]; let i = index;" [ngStyle]="{'right.px': i * 5}" src="assets/img/red_back.png">
+        <img class="top-card" style="right: 25px" src="assets/img/red_back.png">
+    </div>
+
+</div>
