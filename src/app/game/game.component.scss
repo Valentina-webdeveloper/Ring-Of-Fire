@@ -22,6 +22,12 @@
     transition: all 225ms ease-in-out;
 
     &:hover {
-        transform: scale(1.05);
+        transform: scale(1.05) translateY(-5);
     }
+}
+
+.pick-card {
+    transition: all 125 ms ease-in-out;
+    transform: scale(1.55) !important;
+
 }
