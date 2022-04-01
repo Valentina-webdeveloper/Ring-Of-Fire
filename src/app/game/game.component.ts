@@ -25,7 +25,4 @@ export class GameComponent implements OnInit {
     this.pickCardAnimation = true;
   }
 
-
-
-
 }
