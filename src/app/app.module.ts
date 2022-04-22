@@ -8,12 +8,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartScreenComponent,
-    GameComponent
+    GameComponent,
+    PlayerComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

@@ -16,6 +16,7 @@ export class GameComponent implements OnInit {
 
   constructor() { }
 
+  //was macht diese Funktion???
   ngOnInit(): void {
     this.newGame();
   }
