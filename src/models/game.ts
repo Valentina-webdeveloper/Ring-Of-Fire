@@ -1,5 +1,5 @@
 export class Game {
-    public players: string[] = [];
+    public players: string[] = ['Lydia', 'Johannes', 'Martha'];
     public stack: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
@@ -35,3 +35,4 @@ function shuffle(array) {
   
     return array;
   }
+

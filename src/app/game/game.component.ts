@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-game',
@@ -13,8 +15,10 @@ export class GameComponent implements OnInit {
   currentPlayer = 0;
   playedCards = [];
   players = [];
+  name: any;
+  animal: any;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   //was macht diese Funktion???
   ngOnInit(): void {
@@ -40,4 +44,20 @@ export class GameComponent implements OnInit {
     }
   }
 
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  
 }
+
+
