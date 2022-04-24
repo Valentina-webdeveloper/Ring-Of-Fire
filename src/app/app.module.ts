@@ -10,15 +10,22 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { PlayerComponent } from './player/player.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
+import { DialogAddPlayerComponent } from './dialog-add-player/dialog-add-player.component';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { GameInfoComponent } from './game-info/game-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartScreenComponent,
     GameComponent,
-    PlayerComponent
+    PlayerComponent,
+    DialogAddPlayerComponent,
+    GameInfoComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -28,7 +35,10 @@ import { MatIconModule } from '@angular/material/icon';
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    FormsModule //eingefügt um Fehler zu beheben: "can´t bint to ngModel..."
 
   ],
   providers: [],
