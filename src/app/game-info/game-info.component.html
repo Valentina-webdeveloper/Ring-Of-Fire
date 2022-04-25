@@ -1,1 +1,6 @@
-<p>game-info works!</p>
+<mat-card> 
+    <!-- if else -->
+    <mat-card-title>{{ card ? title : 'Please pick a card' }}</mat-card-title>
+
+    <mat-card-content>{{ card ? description : 'Please click on the card stack to pick a card' }}</mat-card-content>
+</mat-card>

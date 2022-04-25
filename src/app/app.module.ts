@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { GameInfoComponent } from './game-info/game-info.component';
 
@@ -38,8 +39,8 @@ import { GameInfoComponent } from './game-info/game-info.component';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    FormsModule //eingefügt um Fehler zu beheben: "can´t bint to ngModel..."
-
+    FormsModule, //eingefügt um Fehler zu beheben: "can´t bint to ngModel..."
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
