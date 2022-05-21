@@ -1,16 +1,22 @@
 <!--modules added in app.module.ts: mat-button, mat-icon, mat-dialog, mat-input-->
 
-
 <h1 mat-dialog-title>Add new player</h1>
 <div mat-dialog-content>
+
   <p>Please enter the name of the player</p>
+
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
+
     <!-- Variable name wird in ts definiert -->
     <input matInput [(ngModel)]="name">
   </mat-form-field>
+
 </div>
 <div mat-dialog-actions>
+
   <button mat-button (click)="onNoClick()">No Thanks</button>
+
   <button mat-button [disabled]="name.length == 0" [mat-dialog-close]="name" cdkFocusInitial>Ok</button>
+  
 </div>

@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { GameInfoComponent } from './game-info/game-info.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { GameInfoComponent } from './game-info/game-info.component';
     MatDialogModule,
     MatInputModule,
     FormsModule, //eingefügt um Fehler zu beheben: "can´t bint to ngModel..."
-    MatCardModule
+    MatCardModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
