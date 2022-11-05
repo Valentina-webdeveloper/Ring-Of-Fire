@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Component({
@@ -18,11 +19,20 @@ export class GameComponent implements OnInit {
   players = [];
   name: string = '';
 
-  constructor(public dialog: MatDialog) { }
-
   ngOnInit(): void {
     this.newGame();
+    this
+      .firestore
+      .collection('games')
+      .valueChanges()
+      .subscribe((game) => {
+        console.log('Game update', game)
+      });
   }
+
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
+  }
+
 
   newGame() {
     this.game = new Game();
@@ -45,14 +55,11 @@ export class GameComponent implements OnInit {
     }
   }
 
-
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
-    dialogRef.afterClosed().subscribe(name => {
-      if(name && name.length > 0) {
-      this.game.players.push(name);
-      }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 
