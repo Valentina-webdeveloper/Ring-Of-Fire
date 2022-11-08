@@ -3,6 +3,7 @@ import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,30 +14,38 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class GameComponent implements OnInit {
   pickCardAnimation = false;
   currentCard: string = '';
-  game!: Game;
+  game: Game;
   currentPlayer = 0;
   playedCards = [];
   players = [];
   name: string = '';
 
+  constructor(private router: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {
+  }
+
+  //first we need the firestoreid of the game, then we subscribe the game
   ngOnInit(): void {
-    this.newGame();
-    this
+    // this.newGame();
+    this.router.params.subscribe((params) => {
+      console.log(params.id);
+
+      this
       .firestore
       .collection('games')
+      .doc(params.id)
       .valueChanges()
       .subscribe((game) => {
         console.log('Game update', game)
       });
+    });
   }
-
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
-  }
-
 
   newGame() {
     this.game = new Game();
-    console.log(this.game);
+    // this
+    //   .firestore
+    //   .collection('games')
+    //   .add(this.game.toJson());
   }
 
   takeCard() {
