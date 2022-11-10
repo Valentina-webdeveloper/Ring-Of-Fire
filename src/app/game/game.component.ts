@@ -23,7 +23,7 @@ export class GameComponent implements OnInit {
   constructor(private router: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {
   }
 
-  //first we need the firestoreid of the game, then we subscribe the game
+  //first we need the firestore-id of the game, then we subscribe the game
   ngOnInit(): void {
     // this.newGame();
     this.router.params.subscribe((params) => {
@@ -74,5 +74,3 @@ export class GameComponent implements OnInit {
 
   
 }
-
-
