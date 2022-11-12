@@ -25,7 +25,7 @@ export class GameComponent implements OnInit {
 
   //first we need the firestore-id of the game, then we subscribe the game
   ngOnInit(): void {
-    // this.newGame();
+    this.newGame();
     this.router.params.subscribe((params) => {
       console.log(params.id);
     });
@@ -41,10 +41,6 @@ export class GameComponent implements OnInit {
 
   newGame() {
     this.game = new Game();
-    // this
-    //   .firestore
-    //   .collection('games')
-    //   .add(this.game.toJson());
   }
 
   takeCard() {
