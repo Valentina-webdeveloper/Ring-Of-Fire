@@ -28,16 +28,15 @@ export class GameComponent implements OnInit {
     // this.newGame();
     this.router.params.subscribe((params) => {
       console.log(params.id);
+    });
 
       this
       .firestore
       .collection('games')
-      .doc(params.id)
       .valueChanges()
       .subscribe((game) => {
         console.log('Game update', game)
       });
-    });
   }
 
   newGame() {
