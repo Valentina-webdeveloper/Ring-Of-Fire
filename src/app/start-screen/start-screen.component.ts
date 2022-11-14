@@ -16,19 +16,17 @@ export class StartScreenComponent implements OnInit {
   }
 
 
+  //new game will created in firestore, button start game
   newGame() {
-    //start game
-    let game = new Game();
-
     this
     .firestore
     .collection('games')
-    .add(this.game.toJson());
+    .add(game.toJson());
     .then( (gameInfo: any) => {
-      console.log(gameInfo);
+
+    this.router.navigateByUrl('/game/', gameInfo.id);
     });
 
-    this.router.navigateByUrl('/game');
   }
 
 
