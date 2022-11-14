@@ -12,60 +12,83 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  pickCardAnimation = false;
-  currentCard: string = '';
   game: Game;
-  currentPlayer = 0;
-  playedCards = [];
-  players = [];
-  name: string = '';
+  gameId: string;
 
-  constructor(private router: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {
-  }
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {}
+
 
   //first we need the firestore-id of the game, then we subscribe the game
   ngOnInit(): void {
     this.newGame();
-    this.router.params.subscribe((params) => {
+    this.route.params.subscribe((params) => {
       console.log(params.id);
+      this.gameId = params.id;
+      this
+        .firestore
+        .collection('games')
+        .doc(this.gameId)
+        .valueChanges()
+        .subscribe((game: any) => {
+          console.log('Game update', game);
+          this.game.currentPlayer = game.currentPlayer;
+          this.game.playedCards = game.playedCards;
+          this.game.players = game.players;
+          this.game.stack = game.stack;
+          this.game.pickCardAnimation = game.pickCardAnimation;
+          this.game.currentCard = game.currentCard;
+        });
     });
 
-      this
-      .firestore
-      .collection('games')
-      .valueChanges()
-      .subscribe((game) => {
-        console.log('Game update', game)
-      });
   }
+
 
   newGame() {
     this.game = new Game();
   }
 
-  takeCard() {
-    if (!this.pickCardAnimation) {
-      this.currentCard = this.game.stack.pop();
-      this.pickCardAnimation = true;
-      console.log('new card: ' + this.currentCard);
-      console.log('game is: ' + this.game);
 
+  takeCard() {
+    if (!this.game.pickCardAnimation) {
+      this.game.currentCard = this.game.stack.pop();
+      this.game.pickCardAnimation = true;
+      console.log('new card: ' + this.game.currentCard);
+      console.log('game is: ' + this.game);
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+      this.saveGame();
+
       setTimeout(() => {
-        this.game.playedCards.push(this.currentCard);
-        this.pickCardAnimation = false;
+        this.game.playedCards.push(this.game.currentCard);
+        this.game.pickCardAnimation = false;
+        this.saveGame();
       }, 1500);
     }
   }
 
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe((name: string) => {
+      if(name && name.length > 0) {
+        this.game.players.push(name);
+        this.saveGame();
+      }
     });
   }
 
-  
+
+  //update game
+  saveGame() {
+    this
+      .firestore
+      .collection('games')
+      .doc(this.gameId)
+      .update(this.game.toJson())
+  }
+
+
+
+
 }
