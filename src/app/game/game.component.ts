@@ -88,7 +88,7 @@ export class GameComponent implements OnInit {
       .update(this.game.toJson())
   }
 
-
+// lala
 
 
 }
