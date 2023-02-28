@@ -128,6 +128,7 @@ export class GameComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   /**
    * Opens the dialog-edit-player component as dialog
    * @param playerID The index of the current player
@@ -303,6 +304,9 @@ export class GameComponent implements OnInit {
 //       .update(this.game.toJson())
 //   }
 
+=======
+// lala
+>>>>>>> 0ddb075952ec55534b188552edaea9374e83a9dc
 
 
 
