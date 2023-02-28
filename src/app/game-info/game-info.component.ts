@@ -29,13 +29,11 @@ export class GameInfoComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('current card:', this.card);
   }
 
   ngOnChanges(): void {
     //if card exists
     if(this.card) {
-      console.log('current card string', this.card);
       let cardNumber = +this.card.split('_')[1];
       this.title = this.cardAction[cardNumber - 1].title; // - 1, weil von Karten 0 bis 12, statt von 1 bis 13
       this.description = this.cardAction[cardNumber - 1].description;

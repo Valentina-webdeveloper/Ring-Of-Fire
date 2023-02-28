@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-add-player.component.scss']
 })
 export class DialogAddPlayerComponent implements OnInit {
+  
   name: string = '';
 
   constructor() { }

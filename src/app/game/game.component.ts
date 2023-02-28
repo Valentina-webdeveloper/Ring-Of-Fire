@@ -22,7 +22,6 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.newGame();
     this.route.params.subscribe((params) => {
-      console.log(params.id);
       this.gameId = params.id;
       this
         .firestore
@@ -48,11 +47,9 @@ export class GameComponent implements OnInit {
 
 
   takeCard() {
-    if (!this.game.pickCardAnimation) {
+    if (!this.game.pickCardAnimation && this.game.players.length > 0) {
       this.game.currentCard = this.game.stack.pop();
       this.game.pickCardAnimation = true;
-      console.log('new card: ' + this.game.currentCard);
-      console.log('game is: ' + this.game);
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
       this.saveGame();
