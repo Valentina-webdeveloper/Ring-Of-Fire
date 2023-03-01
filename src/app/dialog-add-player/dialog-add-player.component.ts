@@ -1,3 +1,4 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,12 +10,14 @@ export class DialogAddPlayerComponent implements OnInit {
   
   name: string = '';
 
-  constructor() { }
+  constructor(
+    public dialogRef: DialogRef<DialogAddPlayerComponent>
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onNoClick() {
-  }
+
+
 
 }

@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
-
+// import { TooltipPosition } from '@angular/material/tooltip';
+// import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-game',
@@ -12,6 +13,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
+
+  // positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+  // position = new FormControl(this.positionOptions[0]);
+
   game: Game;
   gameId: string;
 
@@ -66,7 +71,7 @@ export class GameComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent, {});
 
-    dialogRef.afterClosed().subscribe((name: string) => {
+    dialogRef.afterClosed().subscribe(name => {
       if(name && name.length > 0) {
         this.game.players.push(name);
         this.saveGame();

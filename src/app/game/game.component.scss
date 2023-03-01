@@ -36,18 +36,21 @@
 .pick-card {
     animation: pick-card-animation 1.5s ease-in-out;
     transform: scale(1) translateX(280px) translateY(-230px) rotate(15deg);
- }
+}
 
 @keyframes pick-card-animation {
     0% {
         transform: scale(1);
     }
+
     33% {
         transform: scale(1.33);
     }
+
     66% {
         transform: scale(1.66);
     }
+
     100% {
         transform: scale(1) translateX(280px) translateY(-230px) rotate(15deg);
     }
@@ -65,10 +68,16 @@
     bottom: 32px;
     background-color: white;
     // transition: all 125ms ease-in-out;
+    display: block;
+    margin: 80px auto 400px;
+
 }
 
 .example-button-container {
     cursor: pointer;
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #ccc;
 }
 
 .pin-bottom {
@@ -123,9 +132,11 @@
     0% {
         opacity: 0;
     }
+
     70% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }
@@ -142,4 +153,3 @@
     left: -32px;
     transform: rotate(270deg);
 }
-
