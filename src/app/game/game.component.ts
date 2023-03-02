@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
   game: Game;
   gameId: string;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {}
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
 
   //first we need the firestore-id of the game, then we subscribe the game
@@ -72,11 +72,16 @@ export class GameComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent, {});
 
     dialogRef.afterClosed().subscribe(name => {
-      if(name && name.length > 0) {
+      if (name && name.length > 0) {
         this.game.players.push(name);
         this.saveGame();
       }
+      // this.dialog.close();
     });
+  }
+
+
+  close() {
   }
 
 

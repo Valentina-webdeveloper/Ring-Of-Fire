@@ -26,8 +26,8 @@
         </button>
     </div> -->
     <div class="example-button-container">
-        <button class="btn-add" (click)="openDialog()" mat-mini-fab #tooltip="matTooltip" matTooltip="Add a new Player"
-            matTooltipPosition="left">
+        <button class="btn-add" (click)="openDialog()" matDialogClose mat-mini-fab #tooltip="matTooltip" matTooltip="Add a new Player"
+            [matTooltipPosition]="'left'">
             <mat-icon>add</mat-icon>
             <div *ngIf="game.players.length < 1">
                 <div class="arrow arrow-first pos-player-btn-first"></div>
