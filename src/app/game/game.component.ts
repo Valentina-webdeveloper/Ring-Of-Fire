@@ -15,7 +15,8 @@ export class GameComponent implements OnInit {
   game: Game;
   gameId: string;
   name: string;
-
+  hasBackdrop: boolean;
+  
   constructor(
     private route: ActivatedRoute, 
     private firestore: AngularFirestore, 
