@@ -4,8 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
-// import { TooltipPosition } from '@angular/material/tooltip';
-// import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-game',
@@ -14,13 +12,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GameComponent implements OnInit {
 
-  // positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
-  // position = new FormControl(this.positionOptions[0]);
-
   game: Game;
   gameId: string;
+  name: string;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private firestore: AngularFirestore, 
+    public dialog: MatDialog) { }
 
 
   //first we need the firestore-id of the game, then we subscribe the game
@@ -71,19 +70,17 @@ export class GameComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent, {});
 
+    dialogRef.hasBackdrop = true;
+
     dialogRef.afterClosed().subscribe(name => {
       if (name && name.length > 0) {
         this.game.players.push(name);
         this.saveGame();
       }
-      // this.dialog.close();
     });
   }
 
-
-  close() {
-  }
-
+  
 
   //update game
   saveGame() {

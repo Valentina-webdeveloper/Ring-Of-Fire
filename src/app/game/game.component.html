@@ -1,40 +1,30 @@
 <app-player *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 80 + (i * 70)}"
-    [playerActive]="i == game.currentPlayer" [name]="player" class="player-position">
+  [playerActive]="i == game.currentPlayer" [name]="player" class="player-position">
 </app-player>
 
+
 <div class="game-field">
-    <div class="card-stack">
-        <!--card stack-->
-        <img *ngFor="let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'right.px': i * 5}"
-            src="assets/img/red_back.png">
-        <img (click)="takeCard()" class="top-card" style="right: 25px" src="assets/img/red_back.png">
-        <!--stack for played cards-->
-        <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{ card }}.png" alt="">
-        <!-- current card Animation -->
-        <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px"
-            src="assets/img/cards/{{ game.currentCard }}.png">
-    </div>
+  <div class="card-stack">
+    <!--card stack-->
+    <img *ngFor="let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'right.px': i * 5}" src="assets/img/red_back.png">
+    <img (click)="takeCard()" class="top-card" style="right: 25px" src="assets/img/red_back.png">
+    <!--stack for played cards-->
+    <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{ card }}.png" alt="">
+    <!-- current card Animation -->
+    <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px"
+      src="assets/img/cards/{{ game.currentCard }}.png">
+  </div>
 
 
-    <!-- <div class="game-menu">
-        <button mat-mini-fab color="primary" class="add-player-btn" (click)="openDialog()" matTooltip="Add a new player" matTooltipPosition="left">
-            <mat-icon>add</mat-icon>
-            <div *ngIf="game.players.length < 1">
-                <div class="arrow arrow-first pos-player-btn-first"></div>
-                <div class="arrow arrow-second pos-player-btn-second"></div>
-            </div>
-        </button>
-    </div> -->
-    <div class="example-button-container">
-        <button class="btn-add" (click)="openDialog()" matDialogClose mat-mini-fab #tooltip="matTooltip" matTooltip="Add a new Player"
-            [matTooltipPosition]="'left'">
-            <mat-icon>add</mat-icon>
-            <div *ngIf="game.players.length < 1">
-                <div class="arrow arrow-first pos-player-btn-first"></div>
-                <div class="arrow arrow-second pos-player-btn-second"></div>
-            </div>
-        </button>
-    </div>
+
+  <button class="btn-add" (click)="openDialog()" matDialogClose mat-mini-fab #tooltip="matTooltip"
+        matTooltip="Add a new Player" [matTooltipPosition]="'left'">
+        <mat-icon>add</mat-icon>
+        <div *ngIf="game.players.length < 1">
+            <div class="arrow arrow-first pos-player-btn-first"></div>
+            <div class="arrow arrow-second pos-player-btn-second"></div>
+        </div>
+    </button>
 
 
 </div>
