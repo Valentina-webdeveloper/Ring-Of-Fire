@@ -14,6 +14,7 @@ export class GameComponent implements OnInit {
 
   game: Game;
   gameId: string;
+<<<<<<< HEAD
   name: string;
   hasBackdrop: boolean;
   
@@ -21,6 +22,10 @@ export class GameComponent implements OnInit {
     private route: ActivatedRoute, 
     private firestore: AngularFirestore, 
     public dialog: MatDialog) { }
+=======
+
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
+>>>>>>> 0e3489b (close dialog)
 
 
   //first we need the firestore-id of the game, then we subscribe the game
@@ -78,10 +83,15 @@ export class GameComponent implements OnInit {
         this.game.players.push(name);
         this.saveGame();
       }
+      // this.dialog.close();
     });
   }
 
   
+
+  close() {
+  }
+
 
   //update game
   saveGame() {

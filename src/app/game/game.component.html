@@ -16,6 +16,7 @@
   </div>
 
 
+<<<<<<< HEAD
 
   <button class="btn-add" (click)="openDialog()" matDialogClose mat-mini-fab #tooltip="matTooltip"
         matTooltip="Add a new Player" [matTooltipPosition]="'left'">
@@ -25,6 +26,27 @@
             <div class="arrow arrow-second pos-player-btn-second"></div>
         </div>
     </button>
+=======
+    <!-- <div class="game-menu">
+        <button mat-mini-fab color="primary" class="add-player-btn" (click)="openDialog()" matTooltip="Add a new player" matTooltipPosition="left">
+            <mat-icon>add</mat-icon>
+            <div *ngIf="game.players.length < 1">
+                <div class="arrow arrow-first pos-player-btn-first"></div>
+                <div class="arrow arrow-second pos-player-btn-second"></div>
+            </div>
+        </button>
+    </div> -->
+    <div class="example-button-container">
+        <button class="btn-add" (click)="openDialog()" matDialogClose mat-mini-fab #tooltip="matTooltip" matTooltip="Add a new Player"
+            [matTooltipPosition]="'left'">
+            <mat-icon>add</mat-icon>
+            <div *ngIf="game.players.length < 1">
+                <div class="arrow arrow-first pos-player-btn-first"></div>
+                <div class="arrow arrow-second pos-player-btn-second"></div>
+            </div>
+        </button>
+    </div>
+>>>>>>> 0e3489b (close dialog)
 
 
 </div>
